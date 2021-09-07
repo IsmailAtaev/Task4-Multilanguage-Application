@@ -1,7 +1,6 @@
 package com.task2;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.Objects;
 
 /**
  * @author Ataew Ismayyl
@@ -9,8 +8,6 @@ import org.apache.logging.log4j.Logger;
 
 
 public class Wheel {
-
-    private static final Logger log = LogManager.getLogger(Wheel.class.getName());
 
     int wheelDiameter = 0;
 
@@ -52,5 +49,31 @@ public class Wheel {
         this.typeSeason = typeSeason;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Wheel wheel = (Wheel) o;
+        return wheelDiameter == wheel.wheelDiameter && Objects.equals(wheelBrand, wheel.wheelBrand) && Objects.equals(wheelType, wheel.wheelType) && Objects.equals(typeSeason, wheel.typeSeason);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(wheelDiameter, wheelBrand, wheelType, typeSeason);
+    }
+
+    @Override
+    public String toString() {
+        return "Wheel{" +
+                "wheelDiameter=" + wheelDiameter +
+                ", wheelBrand='" + wheelBrand + '\'' +
+                ", wheelType='" + wheelType + '\'' +
+                ", typeSeason='" + typeSeason + '\'' +
+                '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
