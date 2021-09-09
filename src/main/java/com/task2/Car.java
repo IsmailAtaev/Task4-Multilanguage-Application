@@ -14,6 +14,7 @@ public class Car {
     private Engine engine;
     private Wheel wheel;
     private String autoBrand;
+    private float tankVolume;
 
     public Car(Engine engine, Wheel wheel, String autoBrand, float tankVolume) {
         this.engine = engine;
@@ -22,7 +23,7 @@ public class Car {
         this.setTankVolume(tankVolume);
     }
 
-    public Car(Engine engine,Wheel wheel) {
+    public Car(Engine engine, Wheel wheel) {
         this.engine = engine;
         this.wheel = wheel;
     }
@@ -58,18 +59,16 @@ public class Car {
     /**
      * @param tankVolume
      * @throws IllegalArgumentException if tankVolume more 100 or less 1
-     * because car do not have more one hundred gasoline
+     *                                  because car do not have more one hundred gasoline
      */
     public void setTankVolume(float tankVolume) throws IllegalArgumentException {
-        if (tankVolume > 100 || tankVolume < 1) {
-            logger.log(Level.ERROR,"class Car method setTankVolume()");
+        if (tankVolume > 100.0F || tankVolume < 1.0F) {
+            logger.log(Level.ERROR, "class Car method setTankVolume()");
             throw new IllegalArgumentException("countLiter more one hundred or" +
                     " countLiter less one");
         }
         this.tankVolume = tankVolume;
     }
-
-    private float tankVolume;
 
     public Wheel getWheel() {
         return wheel;
@@ -85,6 +84,16 @@ public class Car {
 
     public void setEngine(Engine engine) {
         this.engine = engine;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "engine=" + engine +
+                ", wheel=" + wheel +
+                ", autoBrand='" + autoBrand + '\'' +
+                ", tankVolume=" + tankVolume +
+                '}';
     }
 
     @Override
@@ -106,21 +115,24 @@ public class Car {
     }
 
     public void drive() {
-        System.out.println("Drive the car");
+        System.out.println("Drive the car" + this.getAutoBrand());
     }
 
     public void changeWheel(int radiusWheel) {
         this.wheel.setWheelDiameter(radiusWheel * 2);
     }
 
-
-    public void gasUp(int countLiter) {
+    public boolean gasUp(int countLiter) {
         try {
             this.setTankVolume(countLiter);
         } catch (IllegalArgumentException argumentException) {
             logger.log(Level.ERROR, argumentException);
+            return false;
         } catch (Exception e) {
             logger.log(Level.ERROR, e);
+            return false;
         }
+        return true;
     }
+
 }

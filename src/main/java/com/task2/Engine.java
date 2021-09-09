@@ -1,13 +1,24 @@
 package com.task2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Engine {
+public class Engine implements Serializable {
 
     private String brand;
     private String model;
     private String engine;
     private int year;
+
+    public Engine() {
+    }
+
+    public Engine(String brand, String model, String engine, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.engine = engine;
+        this.year = year;
+    }
 
     public String getBrand() {
         return brand;

@@ -15,7 +15,18 @@ public class Wheel {
 
     String wheelType; //* type it is sport or regular, bicycle
 
+    //TODO enum used
     String typeSeason; //* winter or summer
+
+    public Wheel() {
+    }
+
+    public Wheel(int wheelRadius, String wheelBrand, String wheelType, String typeSeason) {
+        this.wheelDiameter = wheelRadius * 2;
+        this.wheelBrand = wheelBrand;
+        this.wheelType = wheelType;
+        this.typeSeason = typeSeason;
+    }
 
     public int getWheelDiameter() {
         return wheelDiameter;
