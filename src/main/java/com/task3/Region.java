@@ -14,14 +14,16 @@ public class Region implements Serializable {
     private double square; // площадь
     private long population; // населения
     private String language; // язык
+    private String city;
 
     public Region() {
     }
 
-    public Region(double square, long population, String language) {
+    public Region(double square, long population, String language, String city) {
         this.square = square;
         this.population = population;
         this.language = language;
+        this.city = city;
     }
 
     public double getSquare() {
@@ -48,17 +50,25 @@ public class Region implements Serializable {
         this.language = language;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Region region = (Region) o;
-        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language);
+        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language) && Objects.equals(city, region.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(square, population, language);
+        return Objects.hash(square, population, language, city);
     }
 
     @Override
@@ -67,6 +77,7 @@ public class Region implements Serializable {
                 "square=" + square +
                 ", population=" + population +
                 ", language='" + language + '\'' +
+                ", city='" + city + '\'' +
                 '}';
     }
 
