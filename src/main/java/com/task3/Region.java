@@ -12,10 +12,15 @@ import java.util.Objects;
  * */
 
 public class Region implements Serializable {
+
     private double square; // площадь
+
     private long population; // населения
+
     private String language;
+
     private String city;
+
     protected ArrayList<District> districtArrayList = new ArrayList<>();
 
     public Region() {
@@ -73,12 +78,12 @@ public class Region implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Region region = (Region) o;
-        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language) && Objects.equals(city, region.city);
+        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language) && Objects.equals(city, region.city) && Objects.equals(districtArrayList, region.districtArrayList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(square, population, language, city);
+        return Objects.hash(square, population, language, city, districtArrayList);
     }
 
     @Override
@@ -88,6 +93,7 @@ public class Region implements Serializable {
                 ", population=" + population +
                 ", language='" + language + '\'' +
                 ", city='" + city + '\'' +
+                ", districtArrayList=" + districtArrayList +
                 '}';
     }
 
@@ -95,4 +101,18 @@ public class Region implements Serializable {
     protected Object clone() throws CloneNotSupportedException {
         return new Region();
     }
+
+
+    /**
+     * @return площадь региона
+     * из каждого района берет площадь и, обединяет и возврашае обшее количество.
+     */
+    public double getSquareRegion() {
+        double squareRegion = 0.0D;
+        for (int i = 0; i < districtArrayList.size(); i++) {
+            squareRegion += districtArrayList.get(i).getDistrictArea();
+        }
+        return squareRegion;
+    }
+
 }

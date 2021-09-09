@@ -7,6 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 
+/**
+ * @author issy.
+ * class template .
+ * class do read write file.
+ * */
+
 public class MyFile<T> {
     private final Logger logger = LogManager.getLogger(MyFile.class.getName());
 
@@ -27,6 +33,8 @@ public class MyFile<T> {
         }
         return arrayList;
     }
+
+
 
     public boolean myWrite(T obj, String path){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
@@ -49,6 +57,11 @@ public class MyFile<T> {
         return true;
 
     }
+
+
+    /**
+     * overloading method myWrite
+     * */
     public boolean myWrite(ArrayList<T> tArrayList, String path) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             try {

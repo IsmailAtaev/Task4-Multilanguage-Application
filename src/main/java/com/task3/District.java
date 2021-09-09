@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class District implements Serializable {
+
     private double districtArea;
+
     private double height;
+
     private String timeZone;
+
     private long populationDistrict;
 
     public District() {
