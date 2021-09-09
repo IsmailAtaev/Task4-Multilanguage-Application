@@ -1,6 +1,7 @@
 package com.task3;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -13,10 +14,19 @@ import java.util.Objects;
 public class Region implements Serializable {
     private double square; // площадь
     private long population; // населения
-    private String language; // язык
+    private String language;
     private String city;
+    protected ArrayList<District> districtArrayList = new ArrayList<>();
 
     public Region() {
+    }
+
+    public ArrayList<District> getDistrictArrayList() {
+        return districtArrayList;
+    }
+
+    public void setDistrictArrayList(ArrayList<District> districtArrayList) {
+        this.districtArrayList = districtArrayList;
     }
 
     public Region(double square, long population, String language, String city) {

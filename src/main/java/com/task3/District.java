@@ -10,10 +10,6 @@ public class District implements Serializable {
     private long populationDistrict;
 
     public District() {
-        this.districtArea = 0;
-        this.height = 0;
-        this.timeZone = "";
-        this.populationDistrict = 0;
     }
 
     public District(double districtArea, double height, String timeZone, long populationDistrict) {
