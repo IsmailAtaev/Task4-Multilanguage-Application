@@ -116,10 +116,10 @@ public class State implements Serializable {
      * @param nameCityRegion
      * @param district
      * @return boolean
-     * если нет области никакой то return false because do not
-     * если коллекция не пуста и, не совпадает бласть с областем куда надо добавиь то,
+     * если нет region никакой то return false because do not
+     * если коллекция не пуста и, не совпадает бласть с region куда надо добавиь то,
      * тоже return false
-     * если есть такое область дб регион и return true;
+     * если нету такое область дб регион и return true;
      */
     public boolean addDistrict(String nameCityRegion, District district) {
         for (int i = 0; i < this.regionArrayList.size(); i++) {
