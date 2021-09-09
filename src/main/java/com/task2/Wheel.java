@@ -1,5 +1,6 @@
 package com.task2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Objects;
  * */
 
 
-public class Wheel {
+public class Wheel implements Serializable {
 
     int wheelDiameter = 0;
 

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CarTest {
 
     @Test
-    void setTankVolumePositiveTest() {
+    void setTankVolumeTest() {
         Car car = new Car();
         float actually = 25;
         car.setTankVolume(actually);
@@ -17,18 +17,37 @@ class CarTest {
     }
 
     @Test
-    void setTankVolumeNegativeTest(){
-        Engine engine = new Engine("motorBmw","J360","3.5",2005);
-        Wheel wheel = new Wheel(11,"Dunlop","Sedan","Winter");
-        Car car = new Car(engine,wheel,"BMW",100.0F);
-        float actually = 101;
+    void driveTestPositive() {
 
+        Car carActually = new Car(new Engine("BMW", "G550", "5.5", 2001),
+                new Wheel(11, "Dunlop", "Sedan", "Winter"),
+                "BMW", 60);
 
-      //  car.setTankVolume(actually);
-        float expected = car.getTankVolume();
-        //Assertions.assertEquals(expected,actually);
-        System.out.println(car.toString() + car.gasUp(55));
+        boolean actually = true;
+        boolean expected = carActually.drive();
+        Assertions.assertEquals(expected,actually);
+
+    }
+    @Test
+    void driveTestNegative() {
+
+        Car carActually = new Car(new Engine("BMW", "G550", "5.5", 2001),
+                new Wheel(11, "Dunlop", "Sedan", "Winter"),
+                "BMW", 1);
+
+        carActually.drive();
+        boolean expected = carActually.drive();
+        Assertions.assertEquals(expected,false);
+
     }
 
-
+    @Test
+    void changeWheelTest() {
+        Car car = new Car(new Engine("BMW", "G550", "5.5", 2001),
+                new Wheel(11, "Dunlop", "Sedan", "Winter"),
+                "BMW", 50);
+        int actually = 11 * 2;
+        int expected = car.getWheel().wheelDiameter;
+        Assertions.assertEquals(expected, actually);
+    }
 }

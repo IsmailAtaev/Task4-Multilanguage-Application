@@ -1,5 +1,6 @@
 package com.task2;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.concurrent.CancellationException;
 
@@ -8,7 +9,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 
 
-public class Car {
+public class Car implements Serializable {
 
     private static Logger logger = LogManager.getLogger(Car.class.getName());
     private Engine engine;
@@ -114,8 +115,18 @@ public class Car {
         return Objects.hash(engine, wheel, autoBrand, tankVolume);
     }
 
-    public void drive() {
-        System.out.println("Drive the car" + this.getAutoBrand());
+    /**
+     * @throws IllegalArgumentException
+     * @throws Exception
+     * if car have less one gasoline then exception
+     * @return boolean;
+     * */
+
+    public boolean drive() {
+        if (this.getTankVolume() < 1) return false;
+        System.out.println("Drive the car" + this.getAutoBrand() + " gasoline " + this.getTankVolume());
+        this.tankVolume--;
+        return true;
     }
 
     public void changeWheel(int radiusWheel) {
