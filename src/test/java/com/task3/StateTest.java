@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StateTest {
 
-    @Test
+   /* @Test
     void addDistrictTest() {
 
         Region region = new Region("Russian", "Gomel", "Gomel region");
@@ -28,5 +28,5 @@ class StateTest {
 
 
 
-    }
+    }*/
 }

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RegionTest {
 
-    @Test
+   /* @Test
     void getSquareRegion() {
         District district = new District(333.3, 3350.12, "UTC+3:00", 510300);
         District district1 = new District(523.3, 3450.12, "UTC+4:00", 660300);
@@ -26,6 +26,6 @@ class RegionTest {
             System.out.println(d.toString());
         }
 
-    }
+    }*/
 
 }
