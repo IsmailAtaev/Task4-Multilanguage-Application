@@ -3,6 +3,7 @@ package com.task3;
 
 /**
  * @author issy
+ *
  * */
 
 public class City {
