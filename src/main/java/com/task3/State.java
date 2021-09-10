@@ -18,7 +18,6 @@ public class State implements Serializable {
 
     private String nameCountry;
 
-
     public Logger getLogger() {
         return logger;
     }
@@ -70,7 +69,9 @@ public class State implements Serializable {
                 '}';
     }
 
-    /** возврашаем областные центры */
+    /**
+     * возврашаем областные центры
+     */
     public ArrayList<String> getCountRegionCenter() {
         ArrayList<String> stringArrayList = new ArrayList<>();
         for (int i = 0; i < regionArrayList.size(); i++) {
@@ -86,11 +87,10 @@ public class State implements Serializable {
     public double getSquareCountry() {
         double squareCountry = 0;
         for (int i = 0; i < this.regionArrayList.size(); i++) {
-            squareCountry += this.regionArrayList.get(i).getSquare();
+            squareCountry += this.regionArrayList.get(i).getSquareRegion();
         }
         return squareCountry;
     }
-
 
 
     /**
@@ -102,7 +102,7 @@ public class State implements Serializable {
      */
     public boolean addRegion(Region region) {
         for (int i = 0; i < regionArrayList.size(); i++) {
-            if (region.getCity().equals(regionArrayList.get(i).getCity())) {
+            if (region.getNameRegion().equals(regionArrayList.get(i).getNameRegion())) {
                 logger.log(Level.DEBUG, "class State method addRegion()" +
                         "  this is class have region class on regionArraylist please add other region");
                 return false;
@@ -121,9 +121,9 @@ public class State implements Serializable {
      * тоже return false
      * если нету такое область дб регион и return true;
      */
-    public boolean addDistrict(String nameCityRegion, District district) {
+    public boolean addDistrict(String nameRegion, District district) {
         for (int i = 0; i < this.regionArrayList.size(); i++) {
-            if (nameCityRegion.equals(regionArrayList.get(i).getCity())) {
+            if (nameRegion.equals(regionArrayList.get(i).getNameRegion())) {
                 this.regionArrayList.get(i).districtArrayList.add(district);
                 return true;
             }

@@ -21,7 +21,10 @@ public class Region implements Serializable {
 
     private String city;
 
+    private String nameRegion;
+
     protected ArrayList<District> districtArrayList = new ArrayList<>();
+
 
     public Region() {
     }
@@ -34,22 +37,27 @@ public class Region implements Serializable {
         this.districtArrayList = districtArrayList;
     }
 
-    public Region(double square, long population, String language, String city) {
-        this.square = square;
+    public Region(String language, String city, String nameRegion) {
+        this.square = this.getSquareRegion();
         this.population = population;
         this.language = language;
         this.city = city;
+        this.nameRegion = nameRegion;
     }
 
-    public double getSquare() {
-        return square;
+    public String getNameRegion() {
+        return nameRegion;
     }
 
-    public void setSquare(double square) {
-        this.square = square;
+    public void setNameRegion(String nameRegion) {
+        this.nameRegion = nameRegion;
     }
 
     public long getPopulation() {
+        population = 0;
+        for (int i = 0; i < districtArrayList.size(); i++) {
+            population += districtArrayList.get(i).getPopulationDistrict();
+        }
         return population;
     }
 
@@ -78,12 +86,12 @@ public class Region implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Region region = (Region) o;
-        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language) && Objects.equals(city, region.city) && Objects.equals(districtArrayList, region.districtArrayList);
+        return Double.compare(region.square, square) == 0 && population == region.population && Objects.equals(language, region.language) && Objects.equals(city, region.city) && Objects.equals(nameRegion, region.nameRegion) && Objects.equals(districtArrayList, region.districtArrayList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(square, population, language, city, districtArrayList);
+        return Objects.hash(square, population, language, city, nameRegion, districtArrayList);
     }
 
     @Override
@@ -93,6 +101,7 @@ public class Region implements Serializable {
                 ", population=" + population +
                 ", language='" + language + '\'' +
                 ", city='" + city + '\'' +
+                ", nameRegion='" + nameRegion + '\'' +
                 ", districtArrayList=" + districtArrayList +
                 '}';
     }
@@ -108,11 +117,11 @@ public class Region implements Serializable {
      * из каждого района берет площадь и, обединяет и возврашае обшее количество.
      */
     public double getSquareRegion() {
-        double squareRegion = 0.0D;
+        this.square = 0;
         for (int i = 0; i < districtArrayList.size(); i++) {
-            squareRegion += districtArrayList.get(i).getDistrictArea();
+            square += districtArrayList.get(i).getDistrictArea();
         }
-        return squareRegion;
+        return square;
     }
 
 }

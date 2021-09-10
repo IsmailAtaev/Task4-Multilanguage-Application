@@ -13,7 +13,18 @@ public class District implements Serializable {
 
     private long populationDistrict;
 
+    private String nameDistrict;
+
+    //
     public District() {
+    }
+
+    public District(double districtArea, double height, String timeZone, long populationDistrict, String nameDistrict) {
+        this.districtArea = districtArea;
+        this.height = height;
+        this.timeZone = timeZone;
+        this.populationDistrict = populationDistrict;
+        this.nameDistrict = nameDistrict;
     }
 
     public District(double districtArea, double height, String timeZone, long populationDistrict) {
@@ -21,6 +32,14 @@ public class District implements Serializable {
         this.height = height;
         this.timeZone = timeZone;
         this.populationDistrict = populationDistrict;
+    }
+
+    public String getNameDistrict() {
+        return nameDistrict;
+    }
+
+    public void setNameDistrict(String nameDistrict) {
+        this.nameDistrict = nameDistrict;
     }
 
     public double getDistrictArea() {
@@ -60,12 +79,12 @@ public class District implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         District district = (District) o;
-        return Double.compare(district.districtArea, districtArea) == 0 && Double.compare(district.height, height) == 0 && populationDistrict == district.populationDistrict && Objects.equals(timeZone, district.timeZone);
+        return Double.compare(district.districtArea, districtArea) == 0 && Double.compare(district.height, height) == 0 && populationDistrict == district.populationDistrict && Objects.equals(timeZone, district.timeZone) && Objects.equals(nameDistrict, district.nameDistrict);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(districtArea, height, timeZone, populationDistrict);
+        return Objects.hash(districtArea, height, timeZone, populationDistrict, nameDistrict);
     }
 
     @Override
@@ -75,6 +94,7 @@ public class District implements Serializable {
                 ", height=" + height +
                 ", timeZone='" + timeZone + '\'' +
                 ", populationDistrict=" + populationDistrict +
+                ", nameDistrict='" + nameDistrict + '\'' +
                 '}';
     }
 
