@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ClientBank implements Comparable<ClientBank>{
 
     private String FIO;
-    protected ArrayList<Account> accounts;
+    protected ArrayList<Account> accounts = new ArrayList<>();
 
     public void addAccount(Account account) {
         for (int i = 0; i < accounts.size(); i++) {
