@@ -1,4 +1,4 @@
-package com.task5.tour.country;
+package com.task5.country;
 
 import java.util.Objects;
 
