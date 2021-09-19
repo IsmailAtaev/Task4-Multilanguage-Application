@@ -1,17 +1,15 @@
 package com.task5.director;
 
-import com.task5.builder.Builder;
-import com.task5.country.Country;
-import com.task5.tourType.TourType;
-import com.task5.transportType.TransportType;
+import com.task5.builder.*;
+import com.task5.tour.*;
 
 public class Director {
-    public void constructTourExcursion(Builder builder) {
-        builder.setCountDay(10);
-        builder.setCountry(new Country("Russion", "Moscow"));
-        builder.setPrice(365.23F);
-        builder.setTourName("Excursion");
-        builder.setTourType(TourType.EXCURSIONS);
-        builder.setTransportType(TransportType.AIRLINE);
+    public static Tour createTour(Builder builder) {
+        builder.buildCountry();
+        builder.buildTourType();
+        builder.buildTransportType();
+        builder.buildCountDay();
+        builder.buildPrice();
+        return builder.getTour();
     }
 }

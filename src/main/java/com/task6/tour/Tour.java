@@ -26,6 +26,10 @@ public class Tour {
         this.price = price;
     }
 
+    public Tour() {
+
+    }
+
     public String getCountry() {
         return country;
     }

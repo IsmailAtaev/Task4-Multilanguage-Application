@@ -1,19 +1,22 @@
 package com.task5.builder;
 
-import com.task5.country.*;
-import com.task5.tourType.TourType;
-import com.task5.transportType.TransportType;
+import com.task5.tour.Tour;
 
-public interface Builder {
-    void setCountry(Country country);
+public abstract class Builder {
 
-    void setTourType(TourType tourType);
+    protected Tour tour = new Tour();
 
-    void setTransportType(TransportType transportType);
+    public abstract void buildCountry();
 
-    void setTourName(String tourName);
+    public abstract void buildTourType();
 
-    void setCountDay(int countDay);
+    public abstract void buildTransportType();
 
-    void setPrice(float price);
+    public abstract void buildCountDay();
+
+    public abstract void buildPrice();
+
+    public Tour getTour() {
+        return tour;
+    }
 }

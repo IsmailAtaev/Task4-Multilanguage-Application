@@ -11,21 +11,21 @@ public class Tour {
     private Country country;
     private TourType tourType;
     private TransportType transportType;
-    private String tourName;
     private int countDay;
     private float price;
+
+    public Tour() {
+    }
 
     public Tour(Country country,
                 TourType tourType,
                 TransportType transportType,
-                String tourName,
                 int countDay,
                 float price) {
 
         this.country = country;
         this.tourType = tourType;
         this.transportType = transportType;
-        this.tourName = tourName;
         this.countDay = countDay;
         this.price = price;
     }
@@ -54,14 +54,6 @@ public class Tour {
         this.transportType = transportType;
     }
 
-    public String getTourName() {
-        return tourName;
-    }
-
-    public void setTourName(String tourName) {
-        this.tourName = tourName;
-    }
-
     public int getCountDay() {
         return countDay;
     }
@@ -86,13 +78,12 @@ public class Tour {
         return countDay == tour.countDay && Float.compare(tour.price, price) == 0
                 && Objects.equals(country, tour.country)
                 && tourType == tour.tourType
-                && transportType == tour.transportType
-                && Objects.equals(tourName, tour.tourName);
+                && transportType == tour.transportType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, tourType, transportType, tourName, countDay, price);
+        return Objects.hash(country, tourType, transportType, countDay, price);
     }
 
     @Override
@@ -100,8 +91,7 @@ public class Tour {
         return "Tour{" +
                 "country=" + country +
                 ", tourType=" + tourType +
-                ", transportType=" + transportType +
-                ", tourName='" + tourName + '\'' +
+                ", transportType=" + transportType + '\'' +
                 ", countDay=" + countDay +
                 ", price=" + price +
                 '}';
